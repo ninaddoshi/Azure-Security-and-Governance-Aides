@@ -1,0 +1,182 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "This workbook lists all Azure Public IP Addresses per subscription, resource group and location in your environment. This inventory is collected from the Azure Resource Graph. \n\nSome of the resources you can associate a public IP address resource with are: \n\nVirtual machine network interfaces, Internet-facing load balancers, VPN gateways, Application gateways and Azure Firewall\n"
+      },
+      "name": "text - 2"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "nav",
+        "links": [
+          {
+            "id": "118be7e3-f8fc-4b36-a14c-a5ea0e35a043",
+            "cellValue": "https://docs.microsoft.com/en-us/azure/virtual-network/public-ip-addresses",
+            "linkTarget": "Url",
+            "linkLabel": "Click here",
+            "preText": "To learn more about Public IP Addresses in Azure",
+            "style": "link"
+          }
+        ]
+      },
+      "name": "links - 3"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "resources\r\n| where type == \"microsoft.network/publicipaddresses\" and isnotempty(properties.ipAddress)\r\n| project [\"Name\"] = name, [\"IP Address\"] = properties.ipAddress, [\"Location\"] = location, [\"Resource Group\"] = resourceGroup, [\"Azure Subscription ID\"] = subscriptionId, [\"SKU\"] = sku.name, [\"SKU Tier\"] = sku.tier, [\"Allocation Method\"] = properties.publicIPAllocationMethod, [\"Resource GUID\"] = properties.resourceGuid, [\"Tags\"] = tags, [\"Properties\"] = properties.ipConfiguration.id",
+        "size": 0,
+        "title": "Azure Public IP Address Inventory",
+        "showRefreshButton": true,
+        "exportFieldName": "properties.resourceGuid",
+        "exportParameterName": "resourceGuid",
+        "showExportToExcel": true,
+        "queryType": 1,
+        "resourceType": "microsoft.resourcegraph/resources",
+        "crossComponentResources": [
+          "value::all"
+        ],
+        "visualization": "table",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "Name",
+              "formatter": 0,
+              "formatOptions": {
+                "customColumnWidthSetting": "32.4286ch"
+              }
+            },
+            {
+              "columnMatch": "IP Address",
+              "formatter": 0,
+              "formatOptions": {
+                "customColumnWidthSetting": "20ch"
+              }
+            },
+            {
+              "columnMatch": "Location",
+              "formatter": 1,
+              "formatOptions": {
+                "customColumnWidthSetting": "20ch"
+              }
+            },
+            {
+              "columnMatch": "Resource Group",
+              "formatter": 1,
+              "formatOptions": {
+                "customColumnWidthSetting": "22.1429ch"
+              }
+            },
+            {
+              "columnMatch": "Azure Subscription ID",
+              "formatter": 1,
+              "formatOptions": {
+                "customColumnWidthSetting": "42ch"
+              }
+            },
+            {
+              "columnMatch": "SKU",
+              "formatter": 1,
+              "formatOptions": {
+                "customColumnWidthSetting": "14ch"
+              }
+            },
+            {
+              "columnMatch": "SKU Tier",
+              "formatter": 1,
+              "formatOptions": {
+                "customColumnWidthSetting": "14ch"
+              }
+            },
+            {
+              "columnMatch": "Resource GUID",
+              "formatter": 1,
+              "formatOptions": {
+                "customColumnWidthSetting": "42ch"
+              }
+            },
+            {
+              "columnMatch": "Tags",
+              "formatter": 0,
+              "formatOptions": {
+                "customColumnWidthSetting": "21ch"
+              }
+            },
+            {
+              "columnMatch": "Properties",
+              "formatter": 1,
+              "formatOptions": {
+                "customColumnWidthSetting": "50ch"
+              }
+            }
+          ],
+          "filter": true
+        },
+        "sortBy": [],
+        "tileSettings": {
+          "showBorder": false
+        },
+        "graphSettings": {
+          "type": 0,
+          "topContent": {},
+          "nodeIdField": "Name",
+          "sourceIdField": "IP Address",
+          "targetIdField": "Resource GUID",
+          "graphOrientation": 3,
+          "showOrientationToggles": false,
+          "nodeSize": null,
+          "staticNodeSize": 100,
+          "colorSettings": null,
+          "hivesMargin": 5
+        }
+      },
+      "name": "Azure Public IP Address Inventory"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "resources\r\n| where type == \"microsoft.network/publicipaddresses\" and isnotempty(properties.ipAddress)\r\n| summarize count() by location\r\n",
+        "size": 2,
+        "exportMultipleValues": true,
+        "exportedParameters": [
+          {
+            "fieldName": "location",
+            "parameterName": "location",
+            "parameterType": 8
+          }
+        ],
+        "queryType": 1,
+        "resourceType": "microsoft.resourcegraph/resources",
+        "crossComponentResources": [
+          "value::all"
+        ],
+        "visualization": "map",
+        "mapSettings": {
+          "locInfo": "AzureLoc",
+          "locInfoColumn": "location",
+          "sizeSettings": "count_",
+          "sizeAggregation": "Sum",
+          "labelSettings": "location",
+          "legendMetric": "count_",
+          "legendAggregation": "Sum",
+          "itemColorSettings": {
+            "nodeColorField": "count_",
+            "colorAggregation": "Sum",
+            "type": "heatmap",
+            "heatmapPalette": "greenRed"
+          }
+        }
+      },
+      "name": "query - 2"
+    }
+  ],
+  "fromTemplateId": "Azure-Public-IP Address-Inventory",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
