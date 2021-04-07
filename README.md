@@ -1,5 +1,5 @@
 # Azure-Security-and-Governance-Aides
-A collection of assets I created to help improve security and governance operations for Azure environments
+A collection of assets I created to assist improve security and governance operations for Azure environments
 
 1. Azure Public IP Address Inventory Workbook- 
   This workbook lists all Azure Public IP Addresses per subscription, resource group and location in the Azure environment. This inventory is collected from the Azure Resource Graph and should enable any organization to stay updated on the Public IP addresses that they are responsible for securing.
