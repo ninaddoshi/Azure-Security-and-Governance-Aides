@@ -4,7 +4,7 @@
     {
       "type": 1,
       "content": {
-        "json": "This workbook lists all Azure Public IP Addresses per subscription, resource group and location in your environment. This inventory is collected from the Azure Resource Graph. \n\nSome of the resources you can associate a public IP address resource with are: \n\nVirtual machine network interfaces, Internet-facing load balancers, VPN gateways, Application gateways and Azure Firewall\n"
+        "json": "This workbook lists all Azure Public IP Address resources per subscription, resource group and location in your environment. This inventory is collected from the Azure Resource Graph. \n\nSome of the resources you can associate a public IP address resource with are: \n\nVirtual machine network interfaces, Internet-facing load balancers, VPN gateways, Application gateways and Azure Firewall\n"
       },
       "name": "text - 2"
     },
