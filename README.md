@@ -11,7 +11,7 @@ A collection of assets I created to assist improve security and governance opera
   1. Open the workbook asset in this repo and click on the [RAW] button.
   2. Copy the file content.
   3. Open Azure Monitor, Azure Sentinel or Azure Security Center. in your Azure environment. Go Workbooks and click to create a new workbook.
-  4. Select the </> to enter the Advanced Editor.
+  4. Select the </> icon to enter the Advanced Editor.
   5. Paste the copied JSON from step 2 to replace the existing JSON content.
   6. Click Apply and then click Save
   7. Enter the required details for saving the workbook and save the workbook.
